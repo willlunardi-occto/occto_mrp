@@ -38,7 +38,7 @@
     'depends' : ["mrp"],
     'init_xml' : [],
     'demo_xml' : [],
-    'update_xml' : ['occtomrp_view.xml',],
+    'update_xml' : ['occto_mrp_view.xml',],
     'active': False,
     'installable': True
 }
