@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record id="occtomrp_contrato_tree" model="ir.ui.view">
+			<field name="name">occtomrp.ccontrato.tree</field>
+			<field name="model">occtomrp.contrato</field>
+			<field name="arch" type="xml"> 
+				<tree string="Lista de Contratos">
+					<field name="name"/>
+					<field name="empresa_cliente" />
+					<field name="objeto_contrato"/>
+				</tree>
+			</field>
+		</record>			
+
+
+        <record id="occtomrp_contrato_form" model="ir.ui.view">
+			<field name="name">occtomrp.ccontrato.form</field>
+			<field name="model">occtomrp.contrato</field>
+			<field name="arch" type="xml"> 
+				<form string="Formulário de Contratos" version="7.0" >
+					<header> 
+						<field name="state" widget="statusbar" />
+					</header>
+					<sheet>
+						<group colspan="4">
+							<field name="name" />
+							<field name="empresa_cliente" />
+							<field name="objeto_contrato" />		
+							<field name="data_inicio" />
+							<field name="data_fim" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>			
+
+
+		<!-->###Início - Criação da Ação que abrirá o formulário</!-->
+
+		<record id="occtomrp_contrato_action" model="ir.actions.act_window">
+			<field name="name">Contratos</field>
+			<field name="res_model">occtomrp.contrato</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+        <!-->###Fim - Criação da ação que abrirá o formulário</!-->
+
+		<!-->###Início - Criação do Menu no Openerp</!-->
+	
+		<menuitem id="menu_occtomrp_contrato" name="Contratos"/>
+		<menuitem id="submenu_occtomrp_contrato" name="Seção de Contratos" parent="menu_occtomrp_contrato" />
+		<menuitem id="abretela_occtomrp_contrato" name="Contrato" parent="submenu_occtomrp_contrato" action="occtomrp_contrato_action"/>
+		
+		<!-->###Fim - Criaçã do Menu no Openerp</!-->	
+
+
+
+		<!-->###Início - Alteração na visão da tela criação de ordem de serviço</!-->
+
+        <record id="alteracao_form_cria_ordem_servico" model="ir.ui.view">
+			<field name="name">mrp.production.inherit</field>
+			<field name="model">mrp.production</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+			<field name="arch" type="xml"> 
+				
+				<field name="product_id" position="before" >
+					<field name="contrato" />
+				</field>
+
+			</field>
+		</record>			
+
+		<!-->###Início - Alteração na visão da tela criação de ordem de serviço</!-->
+
+
+
+
+    </data>
+
+</openerp>
+
+
+
+
+
+
+
+
+
+
+
+
